@@ -1,0 +1,25 @@
+<?php
+//$version = $this->config->get('version');
+$localeKey = $this->request->getLocaleKey();
+
+$pageAttr = $this->pageAttr ? $this->pageAttr : [];
+$pageAttr = array_merge($pageAttr, [
+    'token' => $this->token(),
+    'localeKey' => $localeKey,
+    'now' => micro_date()
+]);
+?><!DOCTYPE html>
+<html lang="<?php echo $localeKey; ?>" prefix="og: http://ogp.me/ns#">
+<head>
+<?php echo $this->insert('html/meta'); ?>
+<?php $this->section('style'); ?><?php $this->stop(); ?>
+</head>
+
+<body>
+<?php $this->section('main'); ?><?php $this->stop(); ?>
+
+<input type="hidden" id="page-attr" value="<?php echo attr_json($pageAttr); ?>">
+<?php $this->section('script'); ?><?php $this->stop(); ?>
+</body>
+
+</html>

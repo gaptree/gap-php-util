@@ -1,0 +1,57 @@
+{
+    "name": "gap/util",
+    "type": "library",
+    "description": "Gap Util",
+    "keywords": [
+        "gap"
+    ],
+    "homepage": "https://project.tecposter.cn/diffusion/59/",
+    "authors": [
+        {
+            "name": "zhanjh",
+            "email": "zhanjh@126.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "gap/site": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gap\\Util\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "phpunit\\Gap\\Util\\": "phpunit"
+        }
+    },
+    "repositories": {
+        "0": {
+            "type": "git",
+            "url": "https://project.tecposter.cn/diffusion/63/gap-php-base.git"
+        },
+        "1": {
+            "type": "git",
+            "url": "https://project.tecposter.cn/diffusion/64/gap-php-site.git"
+        }
+    },
+    "bin": [
+        "bin/gap"
+    ],
+    "scripts": {
+        "test": [
+            "@phpcs",
+            "@phpmd",
+            "@phpstan",
+            "@phpunit"
+        ],
+        "phpunit": "phpunit",
+        "phpstan": "phpstan analyse -l 7 -c phpstan.neon phpunit src",
+        "phpcs": "phpcs --report=full --standard=psr2 --extensions=php src phpunit",
+        "phpmd": "phpmd src,phpunit text cleancode,codesize,controversial,design,naming,unusedcode"
+    },
+    "require-dev": {
+        "filp/whoops": "^2.1"
+    }
+}
