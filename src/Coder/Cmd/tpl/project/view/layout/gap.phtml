@@ -1,6 +1,6 @@
 <?php
 //$version = $this->config->get('version');
-$localeKey = $this->request->getLocaleKey();
+$localeKey = $this->getLocaleKey();
 
 $pageAttr = $this->pageAttr ? $this->pageAttr : [];
 $pageAttr = array_merge($pageAttr, [
@@ -11,7 +11,7 @@ $pageAttr = array_merge($pageAttr, [
 ?><!DOCTYPE html>
 <html lang="<?php echo $localeKey; ?>" prefix="og: http://ogp.me/ns#">
 <head>
-<?php echo $this->insert('html/meta'); ?>
+<?php echo $this->insert('html/meta', ['localeKey', $localeKey]); ?>
 <?php $this->section('style'); ?><?php $this->stop(); ?>
 </head>
 

@@ -64,8 +64,7 @@ class RemoveAppCmd extends CmdBase
         $appName = $appParser->getAppName();
         $composerAsm = json_decode(file_get_contents($composerFile), true);
         unset($composerAsm['autoload']['psr-4'][$appName . "\\"]);
-        unset($composerAsm['autoload-dev']['psr-4'][$appName . "\\"]);
-        unset($composerAsm['autoload-dev']['psr-4']["cmdtest\\{$appName}\\"]);
+        unset($composerAsm['autoload-dev']['psr-4']["phpunit\\{$appName}\\"]);
 
         if (!$composerAsm['autoload-dev']['psr-4']) {
             unset($composerAsm['autoload-dev']['psr-4']);

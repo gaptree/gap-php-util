@@ -9,19 +9,19 @@ class InitCmd extends CmdBase
     public function run()
     {
         if (!$this->isGapInstalled()) {
-            $composerCmd = "composer require gap/core";
+            $composerCmd = "composer require gap/site";
             echo $composerCmd . "\n";
             system($composerCmd);
         }
 
-        $cmd = 'cp -vR ' . __DIR__ . '/tpl/project/* ' . $this->baseDir;
+        $cmd = 'cp -vnR ' . __DIR__ . '/tpl/project/* ' . $this->baseDir;
         echo $cmd . "\n";
         system($cmd);
     }
 
     protected function isGapInstalled()
     {
-        $gapRealDir = $this->baseDir . '/vendor/gap/core';
+        $gapRealDir = $this->baseDir . '/vendor/gap/site';
         return file_exists($gapRealDir);
     }
 }

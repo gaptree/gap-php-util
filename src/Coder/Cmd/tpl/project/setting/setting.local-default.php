@@ -1,5 +1,5 @@
 <?php
-$collection = new \Gap\Config\Config();
+$collection = new \Gap\Config\ConfigCollection();
 
 $collection
     ->set('debug', true)
@@ -13,27 +13,11 @@ $collection
         'cache' => [
             'host' => 'redis'
         ],
-        /*
         'session' => [
             'save_handler' => 'redis',
             'save_path' => 'tcp://redis:6379?database=10',
             'cookie_domain' => 'gap.sun'
         ]
-         */
     ]);
 
 return $collection;
-
-/*
-$baseHost = $this->get('baseHost');
-
-$this->set('site', [
-    'www' => [
-        'host' => 'www.' . $baseHost,
-    ],
-    'static' => [
-        'host' => 'static.' . $baseHost,
-        'dir' => $this->get('baseDir') . '/site/static',
-    ],
-]);
- */

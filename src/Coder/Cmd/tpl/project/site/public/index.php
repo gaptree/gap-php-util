@@ -11,7 +11,7 @@ $configBuilder = new \Gap\Config\ConfigBuilder(
 );
 $config = $configBuilder->build();
 
-if ($config->get('debug')) {
+if ($config->get('debug') !== false) {
     $whoops = new \Whoops\Run;
     $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
     $whoops->register();
@@ -26,18 +26,18 @@ $app->set('router', function () use ($config) {
             . '/setting/router';
     }
 
-    $buildRouter = new \Gap\Routing\BuildRouter(
+    $routerBuilder = new \Gap\Routing\RouterBuilder(
         $config->get('baseDir'),
         $srcOpts
     );
     if (false === $config->get('debug')) {
-        $buildRouter
+        $routerBuilder
             ->setCacheFile('cache/setting-router-http.php');
     }
-    return $buildRouter->build();
+    return $routerBuilder->build();
 });
 $app->set('session', function () use ($config) {
-    return obj(new \Gap\Site\BuildSession($config->get('session')))
+    return obj(new \Gap\Site\SessionBuilder($config->get('session')))
         ->build();
 });
 $app->set('viewEngine', function () use ($config) {
@@ -46,6 +46,28 @@ $app->set('viewEngine', function () use ($config) {
         'autoescape' => false,
         'ext' => 'phtml'
     ])->engine();
+});
+
+$app->set('siteUrlBuilder', function () use ($app) {
+    return new \Gap\Routing\SiteUrlBuilder($app->get('siteManager'));
+});
+
+$app->set('routeUrlBuilder', function () use ($app) {
+    $routeUrlBuilder = new \Gap\Routing\RouteUrlBuilder(
+        $app->get('router'),
+        $app->get('siteUrlBuilder')
+    );
+
+    if ($app->has('localeManager')) {
+        $localeManager = $app->get('localeManager');
+        if ('path' === $localeManager->getMode()) {
+            $localeKey = $localeManager->getLocaleKey();
+            $localeKey = $localeKey ? $localeKey : $localeManager->getDefaultLocaleKey();
+            $routeUrlBuilder->setLocaleKey($localeKey);
+        }
+    }
+
+    return $routeUrlBuilder;
 });
 
 $app->set(
@@ -85,7 +107,7 @@ $app->set('meta', function () use ($app, $config) {
 });
  */
 
-$handleHttp = new \Gap\Site\HandleHttp($app);
+$httpHandler = new \Gap\Site\HttpHandler($app);
 $request = new \Gap\Http\Request(
     $_GET,
     $_POST,
@@ -94,5 +116,5 @@ $request = new \Gap\Http\Request(
     $_FILES,
     $_SERVER
 );
-$response = $handleHttp->handle($request);
+$response = $httpHandler->handle($request);
 $response->send();

@@ -1,6 +1,5 @@
 <?php
-$route = $this->request->getRoute()->getName();
-$localeKey = $this->request->getLocaleKey();
+$route = $this->route->getName();
 
 $metaTitle = $this->meta("title-$route", $this->metaTitleVars);
 $metaDescription = $this->meta("description-$route", $this->metaDescriptionVars);
@@ -18,7 +17,7 @@ if ($this->isKeywords || $this->metaKeywordsVars) {
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="<?php echo $this->meta('siteName'); ?>">
-<meta property="og:locale" content="<?php echo $localeKey; ?>">
+<meta property="og:locale" content="<?php echo $this->getLocaleKey(); ?>">
 <meta property="og:titile" content="<?php echo $metaTitle; ?>">
 <meta property="og:description" content="<?php echo $metaDescription; ?>">
 <meta property="ob:url" content="<?php echo $this->request->getUri(); ?>">
