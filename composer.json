@@ -26,16 +26,6 @@
             "phpunit\\Gap\\Util\\": "phpunit"
         }
     },
-    "repositories": {
-        "0": {
-            "type": "git",
-            "url": "https://project.tecposter.cn/diffusion/63/gap-php-base.git"
-        },
-        "1": {
-            "type": "git",
-            "url": "https://project.tecposter.cn/diffusion/64/gap-php-site.git"
-        }
-    },
     "bin": [
         "bin/gap"
     ],

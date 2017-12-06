@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ba636c7ca90d9a633ebdb4ced417305e",
+    "content-hash": "e9b7b3cb0e8c72b0fd87321c91bc7b9d",
     "packages": [
         {
             "name": "aura/html",
@@ -177,17 +177,19 @@
         },
         {
             "name": "gap/base",
-            "version": "1.0.0",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://project.tecposter.cn/diffusion/63/gap-php-base.git",
-                "reference": "a0fd930b41787f4c6cc94390b4d921f163cad4e4"
+                "reference": "cbc72a414470ce0e6b833405d9cecedb5cfdbc8c"
             },
             "require": {
                 "foil/foil": "^0.6.7",
+                "gap/cache": "^1.0",
                 "gap/config": "^1.0",
                 "gap/database": "^1.0",
                 "gap/http": "^1.0",
+                "gap/i18n": "^1.0",
                 "gap/routing": "^1.0",
                 "gap/security": "^1.0",
                 "php": ">=7.1.0"
@@ -198,7 +200,8 @@
                     "Gap\\Base\\": "src"
                 },
                 "files": [
-                    "fun/functions.php"
+                    "fun/functions.php",
+                    "fun/app-register.php"
                 ]
             },
             "autoload-dev": {
@@ -237,7 +240,38 @@
             "keywords": [
                 "gap"
             ],
-            "time": "2017-12-04T11:13:25+00:00"
+            "time": "2017-12-06T11:42:16+00:00"
+        },
+        {
+            "name": "gap/cache",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://project.tecposter.cn/diffusion/53/gap-php-cache.git",
+                "reference": "e0c1bc14af2801f16a5ba5ee7593633a87a9076e"
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gap\\Cache\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "zhanjh",
+                    "email": "zhanjh@126.com"
+                }
+            ],
+            "description": "Gap Cache",
+            "homepage": "https://project.tecposter.cn/diffusion/53/",
+            "keywords": [
+                "gap"
+            ],
+            "time": "2017-12-06T02:20:58+00:00"
         },
         {
             "name": "gap/config",
@@ -303,23 +337,71 @@
         },
         {
             "name": "gap/http",
-            "version": "1.0.0",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://project.tecposter.cn/diffusion/61/gap-php-http.git",
-                "reference": "870a92cafe4e38ff290e52ff6d1fac48db128383"
+                "reference": "b42066904eaaf4b4fea756ed7d9b9582eb0c09e8"
             },
             "require": {
                 "php": ">=7.1.0",
-                "psr/http-message": "^1.0",
-                "symfony/http-foundation": "^3.3",
-                "symfony/psr-http-message-bridge": "^1.0",
-                "zendframework/zend-diactoros": "^1.6"
+                "symfony/http-foundation": "^3.3"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Gap\\Http\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "phpunit\\Gap\\Http\\": "phpunit"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "@phpcs",
+                    "@phpmd",
+                    "@phpstan",
+                    "@phpunit"
+                ],
+                "phpunit": [
+                    "phpunit"
+                ],
+                "phpstan": [
+                    "phpstan analyse -l 7 -c phpstan.neon phpunit src"
+                ],
+                "phpcs": [
+                    "phpcs --report=full --standard=psr2 --extensions=php src phpunit"
+                ],
+                "phpmd": [
+                    "phpmd src,phpunit text cleancode,codesize,controversial,design,naming,unusedcode"
+                ]
+            },
+            "authors": [
+                {
+                    "name": "zhanjh",
+                    "email": "zhanjh@126.com"
+                }
+            ],
+            "time": "2017-12-06T10:48:16+00:00"
+        },
+        {
+            "name": "gap/i18n",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://project.tecposter.cn/diffusion/55/gap-php-i-n.git",
+                "reference": "228fdce869a841b684a2c1acacd1a52cdc76f3d9"
+            },
+            "require": {
+                "gap/database": "^1.0",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gap\\I18n\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -329,15 +411,20 @@
                     "email": "zhanjh@126.com"
                 }
             ],
-            "time": "2017-12-04T09:44:09+00:00"
+            "description": "Gap I18n",
+            "homepage": "https://project.tecposter.cn/diffusion/55/",
+            "keywords": [
+                "gap"
+            ],
+            "time": "2017-12-05T12:13:59+00:00"
         },
         {
             "name": "gap/routing",
-            "version": "1.0.0",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://project.tecposter.cn/diffusion/51/gap-php-routing.git",
-                "reference": "f3220be0c3034e1bfee6a69ee85abc21b8c4c9f8"
+                "reference": "57258f8887e9e6ebf329536cc21e3de3e365269d"
             },
             "require": {
                 "nikic/fast-route": "^1.2",
@@ -361,7 +448,7 @@
             "keywords": [
                 "gap"
             ],
-            "time": "2017-12-03T11:44:25+00:00"
+            "time": "2017-12-05T08:43:31+00:00"
         },
         {
             "name": "gap/security",
@@ -397,11 +484,11 @@
         },
         {
             "name": "gap/site",
-            "version": "1.0.1",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://project.tecposter.cn/diffusion/64/gap-php-site.git",
-                "reference": "db0bc9617c39dcf1893d4562c09d63f45146c4d7"
+                "reference": "8a61b6f41d3011474c3aea84bfeb7335599d645c"
             },
             "require": {
                 "gap/base": "^1.0",
@@ -449,7 +536,7 @@
             "keywords": [
                 "gap"
             ],
-            "time": "2017-12-04T12:38:14+00:00"
+            "time": "2017-12-06T11:45:10+00:00"
         },
         {
             "name": "gap/valid",
@@ -718,58 +805,8 @@
             "time": "2017-02-14T16:28:37+00:00"
         },
         {
-            "name": "psr/http-message",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-message.git",
-                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://files.phpcomposer.com/files/php-fig/http-message/f6561bf28d520154e4b0ec72be95418abe6d9363.zip",
-                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Message\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for HTTP messages",
-            "homepage": "https://github.com/php-fig/http-message",
-            "keywords": [
-                "http",
-                "http-message",
-                "psr",
-                "psr-7",
-                "request",
-                "response"
-            ],
-            "time": "2016-08-06T14:39:51+00:00"
-        },
-        {
             "name": "symfony/http-foundation",
-            "version": "v3.4.0",
+            "version": "v3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
@@ -938,118 +975,6 @@
                 "shim"
             ],
             "time": "2017-10-11T12:05:26+00:00"
-        },
-        {
-            "name": "symfony/psr-http-message-bridge",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/psr-http-message-bridge.git",
-                "reference": "66085f246d3893cbdbcec5f5ad15ac60546cf0de"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/psr-http-message-bridge/66085f246d3893cbdbcec5f5ad15ac60546cf0de.zip",
-                "reference": "66085f246d3893cbdbcec5f5ad15ac60546cf0de",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "psr/http-message": "~1.0",
-                "symfony/http-foundation": "~2.3|~3.0"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "~2.7|~3.0"
-            },
-            "suggest": {
-                "psr/http-message-implementation": "To use the HttpFoundation factory",
-                "zendframework/zend-diactoros": "To use the Zend Diactoros factory"
-            },
-            "type": "symfony-bridge",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Bridge\\PsrHttpMessage\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "PSR HTTP message bridge",
-            "homepage": "http://symfony.com",
-            "keywords": [
-                "http",
-                "http-message",
-                "psr-7"
-            ],
-            "time": "2016-09-14T18:37:20+00:00"
-        },
-        {
-            "name": "zendframework/zend-diactoros",
-            "version": "1.6.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/zend-diactoros.git",
-                "reference": "c8664b92a6d5bc229e48b0923486c097e45a7877"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://files.phpcomposer.com/files/zendframework/zend-diactoros/c8664b92a6d5bc229e48b0923486c097e45a7877.zip",
-                "reference": "c8664b92a6d5bc229e48b0923486c097e45a7877",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.6 || ^7.0",
-                "psr/http-message": "^1.0"
-            },
-            "provide": {
-                "psr/http-message-implementation": "1.0"
-            },
-            "require-dev": {
-                "ext-dom": "*",
-                "ext-libxml": "*",
-                "phpunit/phpunit": "^5.7.16 || ^6.0.8",
-                "zendframework/zend-coding-standard": "~1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.6-dev",
-                    "dev-develop": "1.7-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Zend\\Diactoros\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "description": "PSR HTTP Message implementations",
-            "homepage": "https://github.com/zendframework/zend-diactoros",
-            "keywords": [
-                "http",
-                "psr",
-                "psr-7"
-            ],
-            "time": "2017-10-12T15:24:51+00:00"
         }
     ],
     "packages-dev": [
