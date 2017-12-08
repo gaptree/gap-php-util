@@ -2,8 +2,6 @@
 $baseDir = realpath(__DIR__ . '/../../');
 require $baseDir . '/vendor/autoload.php';
 
-// baseDir: /var/space/gap/gap-core
-
 $configBuilder = new \Gap\Config\ConfigBuilder(
     $baseDir,
     'setting/setting.php',

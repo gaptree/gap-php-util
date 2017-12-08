@@ -16,7 +16,7 @@ $collection
         'session' => [
             'save_handler' => 'redis',
             'save_path' => 'tcp://redis:6379?database=10',
-            'cookie_domain' => 'gap.sun'
+            'subdomain' => 'www'
         ]
     ]);
 

@@ -26,6 +26,9 @@
             "phpunit\\Gap\\Util\\": "phpunit"
         }
     },
+    "suggest": {
+        "filp/whoops": "^2.1"
+    },
     "bin": [
         "bin/gap"
     ],
