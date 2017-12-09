@@ -4,7 +4,7 @@ $localeKey = $this->getLocaleKey();
 
 $pageAttr = $this->pageAttr ? $this->pageAttr : [];
 $pageAttr = array_merge($pageAttr, [
-    'token' => $this->token(),
+    'csrfToken' => $this->csrfToken(),
     'localeKey' => $localeKey,
     'now' => micro_date()
 ]);
