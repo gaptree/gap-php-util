@@ -7,6 +7,7 @@ $collection
     ->set('local', [
         'db' => [
             'host' => 'db',
+            'database' => 'gap',
             'username' => 'gap',
             'password' => '123456789'
         ],

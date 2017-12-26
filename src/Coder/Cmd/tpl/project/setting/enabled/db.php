@@ -7,7 +7,7 @@ $collection
             'driver' => 'mysql',
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
-            'database' => 'gap',
+            'database' => '%local.db.database%',
             'host' => '%local.db.host%',
             'username' => '%local.db.username%',
             'password' => '%local.db.password%'
@@ -16,7 +16,7 @@ $collection
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'driver' => 'mysql',
-            'database' => 'gap',
+            'database' => '%local.db.database%',
             'host' => '%local.db.host%',
             'username' => '%local.db.username%',
             'password' => '%local.db.password%'
@@ -25,7 +25,7 @@ $collection
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'driver' => 'mysql',
-            'database' => 'gap',
+            'database' => '%local.db.database%',
             'host' => '%local.db.host%',
             'username' => '%local.db.username%',
             'password' => '%local.db.password%'
