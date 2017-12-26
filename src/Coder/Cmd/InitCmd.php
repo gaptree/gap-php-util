@@ -14,7 +14,7 @@ class InitCmd extends CmdBase
             system($composerCmd);
         }
 
-        $cmd = 'cp -vnR ' . __DIR__ . '/tpl/project/* ' . $this->baseDir;
+        $cmd = 'cp -rvnR ' . __DIR__ . '/tpl/project/. ' . $this->baseDir;
         echo $cmd . "\n";
         system($cmd);
     }
