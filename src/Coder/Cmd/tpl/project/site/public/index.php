@@ -45,7 +45,7 @@ $app->set('meta', function () use ($app, $config) {
 });
  */
 
-$httpHandler = new \Gap\Site\HttpHandler($app);
+$httpHandler = new \Gap\Base\HttpHandler($app);
 $request = new \Gap\Http\Request(
     $_GET,
     $_POST,
