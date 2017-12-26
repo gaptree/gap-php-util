@@ -29,9 +29,6 @@
     "suggest": {
         "filp/whoops": "^2.1"
     },
-    "bin": [
-        "bin/gap"
-    ],
     "scripts": {
         "test": [
             "@phpcs",
