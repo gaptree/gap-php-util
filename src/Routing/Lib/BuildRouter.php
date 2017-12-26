@@ -22,7 +22,7 @@ class BuildRouter
                 . '/setting/router';
         }
 
-        $routerBuilder = new \Gap\Routing\BuildRouter(
+        $routerBuilder = new \Gap\Routing\RouterBuilder(
             $config->get('baseDir'),
             $srcOpts
         );
