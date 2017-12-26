@@ -14,11 +14,13 @@
 **/*.map
 **/*.local.js
 **/*.local.php
+**/*.local.json
 
-**/*.lock
+#**/*.lock
 **/*.bak
-
+**/*.bk
 **/_bk-*
+**/.bk-*
 
 ehthumbs.db
 Thumbs.db
@@ -26,7 +28,8 @@ dump.rdb
 npm-debug.log
 npm-debug.log
 Session.vim
-composer.lock
+#composer.lock
+#package-lock.json
 tags
 
 vendor/
