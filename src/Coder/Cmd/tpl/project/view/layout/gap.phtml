@@ -1,10 +1,8 @@
 <?php
-//$version = $this->config->get('version');
 $localeKey = $this->getLocaleKey();
 
-$pageAttr = $this->pageAttr ? $this->pageAttr : [];
-$pageAttr = array_merge($pageAttr, [
-    'csrfToken' => $this->csrfToken(),
+$pageConfig = $this->pageConfig ? $this->pageConfig : [];
+$pageConfig = array_merge($pageConfig, [
     'localeKey' => $localeKey,
     'now' => micro_date()
 ]);
@@ -18,7 +16,9 @@ $pageAttr = array_merge($pageAttr, [
 <body>
 <?php $this->section('main'); ?><?php $this->stop(); ?>
 
-<input type="hidden" id="page-attr" value="<?php echo attr_json($pageAttr); ?>">
+<script type="text/javascript">
+window.PageConfig=<?php echo json_encode($pageConfig); ?>;
+</script>
 <?php $this->section('script'); ?><?php $this->stop(); ?>
 </body>
 
