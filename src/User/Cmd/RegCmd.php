@@ -8,7 +8,7 @@ class RegCmd extends CmdBase
     public function run(): void
     {
         if (!isset($this->parameters[1])) {
-            echo "$ ./vendor/bin/gap createUser '{username}' '{password}'\n";
+            echo "$ ./vendor/bin/gap reg '{username}' '{password}'\n";
             return;
         }
 
