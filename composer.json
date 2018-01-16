@@ -14,7 +14,9 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "gap/site": "^1.0"
+        "gap/site": "^1.0",
+        "gap/user": "^1.0",
+        "filp/whoops": "^2.1"
     },
     "autoload": {
         "psr-4": {
@@ -25,9 +27,6 @@
         "psr-4": {
             "phpunit\\Gap\\Util\\": "phpunit"
         }
-    },
-    "suggest": {
-        "filp/whoops": "^2.1"
     },
     "scripts": {
         "test": [
@@ -40,8 +39,5 @@
         "phpstan": "phpstan analyse -l 7 -c phpstan.neon phpunit src",
         "phpcs": "phpcs --report=full --standard=psr2 --extensions=php src phpunit",
         "phpmd": "phpmd src,phpunit text cleancode,codesize,controversial,design,naming,unusedcode"
-    },
-    "require-dev": {
-        "filp/whoops": "^2.1"
     }
 }

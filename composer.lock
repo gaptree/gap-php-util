@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9b7b3cb0e8c72b0fd87321c91bc7b9d",
+    "content-hash": "340f9b8cf24dded931145110f5b9f73e",
     "packages": [
         {
             "name": "aura/html",
@@ -116,6 +116,67 @@
             "time": "2017-07-17T17:39:19+00:00"
         },
         {
+            "name": "filp/whoops",
+            "version": "2.1.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/filp/whoops.git",
+                "reference": "c6081b8838686aa04f1e83ba7e91f78b7b2a23e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/filp/whoops/c6081b8838686aa04f1e83ba7e91f78b7b2a23e6.zip",
+                "reference": "c6081b8838686aa04f1e83ba7e91f78b7b2a23e6",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9 || ^7.0",
+                "psr/log": "^1.0.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "^4.8.35 || ^5.7",
+                "symfony/var-dumper": "^2.6 || ^3.0"
+            },
+            "suggest": {
+                "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
+                "whoops/soap": "Formats errors as SOAP responses"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Whoops\\": "src/Whoops/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Filipe Dobreira",
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
+                }
+            ],
+            "description": "php error handling for cool kids",
+            "homepage": "https://filp.github.io/whoops/",
+            "keywords": [
+                "error",
+                "exception",
+                "handling",
+                "library",
+                "throwable",
+                "whoops"
+            ],
+            "time": "2017-11-23T18:22:44+00:00"
+        },
+        {
             "name": "foil/foil",
             "version": "0.6.7",
             "source": {
@@ -177,11 +238,11 @@
         },
         {
             "name": "gap/base",
-            "version": "1.1.0",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://project.tecposter.cn/diffusion/63/gap-php-base.git",
-                "reference": "932795faa66246066125b4daeb00e1aceefecd0a"
+                "reference": "e686fdcbccf3fe37f0c535d4bb778eec0e657810"
             },
             "require": {
                 "foil/foil": "^0.6.7",
@@ -195,6 +256,9 @@
                 "gap/security": "^1.0",
                 "php": ">=7.1.0"
             },
+            "bin": [
+                "bin/gap"
+            ],
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -217,7 +281,7 @@
             "keywords": [
                 "gap"
             ],
-            "time": "2017-12-26T07:27:44+00:00"
+            "time": "2017-12-26T10:08:23+00:00"
         },
         {
             "name": "gap/cache",
@@ -315,11 +379,11 @@
         },
         {
             "name": "gap/dto",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://project.tecposter.cn/diffusion/75/gap-php-dto.git",
-                "reference": "b52e3e03fc221f4f68d619a6840eafc632d7a61b"
+                "reference": "892adce9ba99b691246679a2801995d7d35e5043"
             },
             "require": {
                 "php": ">=7.1.0"
@@ -346,7 +410,7 @@
                 "dto",
                 "gap"
             ],
-            "time": "2017-12-25T09:34:39+00:00"
+            "time": "2018-01-15T07:26:22+00:00"
         },
         {
             "name": "gap/http",
@@ -377,11 +441,11 @@
         },
         {
             "name": "gap/i18n",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://project.tecposter.cn/diffusion/55/gap-php-i-n.git",
-                "reference": "228fdce869a841b684a2c1acacd1a52cdc76f3d9"
+                "reference": "04c565abfd21f6fa2ce4ac6df281d5126407156a"
             },
             "require": {
                 "gap/database": "^1.0",
@@ -405,15 +469,86 @@
             "keywords": [
                 "gap"
             ],
-            "time": "2017-12-05T12:13:59+00:00"
+            "time": "2018-01-16T06:53:53+00:00"
+        },
+        {
+            "name": "gap/open-contract",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://project.tecposter.cn/diffusion/71/gap-php-open-contract.git",
+                "reference": "ebae2c7bdc2ab4e3d0f3161181f76d562b2e11ac"
+            },
+            "require": {
+                "gap/open-dto": "^1.0",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gap\\Open\\Contract\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "zhanjh",
+                    "email": "zhanjh@126.com"
+                }
+            ],
+            "description": "Gap Open Contract",
+            "homepage": "https://project.tecposter.cn/diffusion/71/",
+            "keywords": [
+                "gap",
+                "oauth2"
+            ],
+            "time": "2017-12-17T12:49:35+00:00"
+        },
+        {
+            "name": "gap/open-dto",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://project.tecposter.cn/diffusion/66/gap-php-open-dto.git",
+                "reference": "2b5737325ba39ce454c2d223ecb5fa72703a91c2"
+            },
+            "require": {
+                "gap/dto": "^1.0",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gap\\Open\\Dto\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "zhanjh",
+                    "email": "zhanjh@126.com"
+                }
+            ],
+            "description": "Gap Open Dto",
+            "homepage": "https://project.tecposter.cn/diffusion/66/",
+            "keywords": [
+                "gap"
+            ],
+            "time": "2017-12-25T12:08:09+00:00"
         },
         {
             "name": "gap/routing",
-            "version": "1.0.7",
+            "version": "1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://project.tecposter.cn/diffusion/51/gap-php-routing.git",
-                "reference": "1f57a307d6138d7bbdc707bf90ad5bf84bf838a8"
+                "reference": "d564e6bff9d7e6045abd1cefbdb31104c2c1e2a0"
             },
             "require": {
                 "nikic/fast-route": "^1.2",
@@ -437,7 +572,7 @@
             "keywords": [
                 "gap"
             ],
-            "time": "2017-12-20T08:10:08+00:00"
+            "time": "2018-01-08T05:56:24+00:00"
         },
         {
             "name": "gap/security",
@@ -502,6 +637,45 @@
                 "gap"
             ],
             "time": "2017-12-19T11:02:50+00:00"
+        },
+        {
+            "name": "gap/user",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://project.tecposter.cn/diffusion/74/gap-php-user.git",
+                "reference": "370254a8659dcc8d0fee5036577697e21a84ae21"
+            },
+            "require": {
+                "gap/database": "^1.0",
+                "gap/dto": "^1.0",
+                "gap/open-contract": "^1.0",
+                "gap/open-dto": "^1.0",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gap\\User\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "zhanjh",
+                    "email": "zhanjh@126.com"
+                }
+            ],
+            "description": "Gap User",
+            "homepage": "https://project.tecposter.cn/diffusion/74/",
+            "keywords": [
+                "gap",
+                "user"
+            ],
+            "time": "2018-01-16T07:46:51+00:00"
         },
         {
             "name": "gap/valid",
@@ -912,16 +1086,16 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
-                "reference": "d00351f230ca037ca13f6fec3411e002043f7421"
+                "reference": "1ebe207de664355b1699d35b12b0563c38a47b4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/cache/d00351f230ca037ca13f6fec3411e002043f7421.zip",
-                "reference": "d00351f230ca037ca13f6fec3411e002043f7421",
+                "url": "https://files.phpcomposer.com/files/symfony/cache/1ebe207de664355b1699d35b12b0563c38a47b4e.zip",
+                "reference": "1ebe207de664355b1699d35b12b0563c38a47b4e",
                 "shasum": ""
             },
             "require": {
@@ -977,20 +1151,20 @@
                 "caching",
                 "psr6"
             ],
-            "time": "2017-12-08T16:11:45+00:00"
+            "time": "2018-01-03T17:15:19+00:00"
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v3.4.2",
+            "version": "v3.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "59bf131b5460227a2f583a7dbe6b179f98f9e0a5"
+                "reference": "4a213be1cc8598089b8c7451529a2927b49b5d26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/http-foundation/59bf131b5460227a2f583a7dbe6b179f98f9e0a5.zip",
-                "reference": "59bf131b5460227a2f583a7dbe6b179f98f9e0a5",
+                "url": "https://files.phpcomposer.com/files/symfony/http-foundation/4a213be1cc8598089b8c7451529a2927b49b5d26.zip",
+                "reference": "4a213be1cc8598089b8c7451529a2927b49b5d26",
                 "shasum": ""
             },
             "require": {
@@ -1031,7 +1205,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-12-14T19:40:10+00:00"
+            "time": "2018-01-03T17:14:19+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1152,69 +1326,7 @@
             "time": "2017-10-11T12:05:26+00:00"
         }
     ],
-    "packages-dev": [
-        {
-            "name": "filp/whoops",
-            "version": "2.1.14",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/filp/whoops.git",
-                "reference": "c6081b8838686aa04f1e83ba7e91f78b7b2a23e6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://files.phpcomposer.com/files/filp/whoops/c6081b8838686aa04f1e83ba7e91f78b7b2a23e6.zip",
-                "reference": "c6081b8838686aa04f1e83ba7e91f78b7b2a23e6",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.5.9 || ^7.0",
-                "psr/log": "^1.0.1"
-            },
-            "require-dev": {
-                "mockery/mockery": "0.9.*",
-                "phpunit/phpunit": "^4.8.35 || ^5.7",
-                "symfony/var-dumper": "^2.6 || ^3.0"
-            },
-            "suggest": {
-                "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
-                "whoops/soap": "Formats errors as SOAP responses"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Whoops\\": "src/Whoops/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Filipe Dobreira",
-                    "homepage": "https://github.com/filp",
-                    "role": "Developer"
-                }
-            ],
-            "description": "php error handling for cool kids",
-            "homepage": "https://filp.github.io/whoops/",
-            "keywords": [
-                "error",
-                "exception",
-                "handling",
-                "library",
-                "throwable",
-                "whoops"
-            ],
-            "time": "2017-11-23T18:22:44+00:00"
-        }
-    ],
+    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],

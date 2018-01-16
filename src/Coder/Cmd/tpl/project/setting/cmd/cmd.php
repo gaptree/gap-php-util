@@ -15,6 +15,7 @@ return [
     'listModule' => 'Gap\Util\Coder\Cmd\ListModuleCmd',
     'buildEntity' => 'Gap\Util\Coder\Cmd\BuildEntityCmd',
     'removeModule' => 'Gap\Util\Coder\Cmd\RemoveModuleCmd',
+    'reg' => 'Gap\Util\User\Cmd\RegCmd'
 
     // customer cmd
 ];
