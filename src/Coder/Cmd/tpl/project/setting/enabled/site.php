@@ -3,7 +3,7 @@ $collection = new \Gap\Config\ConfigCollection();
 
 $collection
     ->set('site', [
-        'www' => [
+        'default' => [
             'host' => 'www.%baseHost%',
         ],
         'static' => [
