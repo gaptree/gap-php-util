@@ -28,12 +28,17 @@ register_route_url_builder($app);
 // register_cmg($app);
 // register_translator($app);
 
+/*
 register_request_filter_manager($app, [
     new \Gap\Base\RequestFilter\CsrfFilter()
 ]);
+*/
+
+/*
 register_route_filter_manager($app, [
     new \Gap\Base\RouteFilter\LoginFilter()
 ]);
+*/
 
 /*
 // composer require gap/meta
