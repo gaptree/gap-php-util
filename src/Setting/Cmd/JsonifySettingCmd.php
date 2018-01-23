@@ -45,7 +45,7 @@ class JsonifySettingCmd extends CmdBase
         echo $versionSettingStr;
         echo "\n";
 
-        $serverSettingStr = $this->getServerSettingStr($vcode);
+        $serverSettingStr = $this->getServerSettingStr($serverId);
         file_put_contents(
             $this->baseDir . '/setting/local/server.php',
             $serverSettingStr
@@ -79,7 +79,7 @@ class JsonifySettingCmd extends CmdBase
         $codes = [];
         $codes[] = '<?php';
         $codes[] = '$collection = new \Gap\Config\ConfigCollection();';
-        $codes[] = '$collection->set(\"server\", [';
+        $codes[] = '$collection->set("server", [';
         $codes[] = "    \"id\" => \"$serverId\"";
         $codes[] = ']);';
         $codes[] = 'return $collection;';
