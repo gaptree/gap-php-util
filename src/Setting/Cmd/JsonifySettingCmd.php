@@ -9,10 +9,16 @@ class JsonifySettingCmd extends CmdBase
         $vcode = uniqid('gap');
 
         $config = $this->app->getConfig();
+        $serverId = $config->get('server.id');
+
+        if (empty($serverId) || 1 === intval($serverId)) {
+            $serverId = bin2hex(random_bytes(3));
+        }
 
         $jsSetting = [
             'debug' => $config->get('debug'),
             'vcode' => $vcode,
+            'serverId' => $serverId,
             'baseDir' => $config->get('baseDir'),
             'baseHost' => $config->get('baseHost'),
             'site' => $config->get('site'),
@@ -29,14 +35,24 @@ class JsonifySettingCmd extends CmdBase
         echo $content;
         echo "\n\n";
 
-        $settingContent = $this->getSettingContent($vcode);
+        $versionSettingStr = $this->getVersionSettingStr($vcode);
         file_put_contents(
             $this->baseDir . '/setting/local/version.php',
-            $settingContent
+            $versionSettingStr
         );
 
         $this->echoGreen("Write vcode to setting/local/version.php");
-        echo $settingContent;
+        echo $versionSettingStr;
+        echo "\n";
+
+        $serverSettingStr = $this->getServerSettingStr($vcode);
+        file_put_contents(
+            $this->baseDir . '/setting/local/server.php',
+            $serverSettingStr
+        );
+
+        $this->echoGreen("Write server.id to setting/local/server.php");
+        echo $serverSettingStr;
         echo "\n";
     }
 
@@ -47,13 +63,25 @@ class JsonifySettingCmd extends CmdBase
         echo $green . $msg . $noColor . "\n";
     }
 
-    protected function getSettingContent($vcode)
+    protected function getVersionSettingStr($vcode)
     {
         $codes = [];
         $codes[] = '<?php';
         $codes[] = '$collection = new \Gap\Config\ConfigCollection();';
         $codes[] = '$collection';
         $codes[] = "    ->set(\"vcode\", \"$vcode\");";
+        $codes[] = 'return $collection;';
+        return implode("\n", $codes) . "\n";
+    }
+
+    protected function getServerSettingStr($serverId)
+    {
+        $codes = [];
+        $codes[] = '<?php';
+        $codes[] = '$collection = new \Gap\Config\ConfigCollection();';
+        $codes[] = '$collection->set(\"server\", [';
+        $codes[] = "    \"id\" => \"$serverId\"";
+        $codes[] = ']);';
         $codes[] = 'return $collection;';
         return implode("\n", $codes) . "\n";
     }
