@@ -18,11 +18,11 @@ class InitCmd extends CmdBase
         echo $cmd . "\n";
         system($cmd);
 
-        echo "rename setting/setting.{local-default -> local}.php \n";
-        copy(
-            $this->baseDir . '/setting/setting.local-default.php',
-            $this->baseDir . '/setting/setting.local.php'
-        );
+        $cpCmd = 'cp -vn '
+            . $this->baseDir . '/setting/setting.local-default.php '
+            . $this->baseDir . '/setting/setting.local.php';
+        echo "cp setting/setting.{local-default -> local}.php \n";
+        system($cpCmd);
     }
 
     protected function isGapInstalled()
