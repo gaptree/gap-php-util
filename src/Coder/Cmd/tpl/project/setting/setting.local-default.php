@@ -4,6 +4,9 @@ $collection = new \Gap\Config\ConfigCollection();
 $collection
     ->set('debug', true)
     ->set('baseHost', 'gap.sun')
+    ->set('front', [
+        'port' => 8787
+    ])
     ->set('local', [
         'db' => [
             'host' => 'db',

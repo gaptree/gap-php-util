@@ -17,6 +17,12 @@ class InitCmd extends CmdBase
         $cmd = 'cp -vnR ' . __DIR__ . '/tpl/project/. ' . $this->baseDir;
         echo $cmd . "\n";
         system($cmd);
+
+        echo "rename setting/setting.{local-default -> local}.php \n";
+        copy(
+            $this->baseDir . '/setting/setting.local-default.php',
+            $this->baseDir . '/setting/setting.local.php'
+        );
     }
 
     protected function isGapInstalled()

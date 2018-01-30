@@ -23,6 +23,7 @@ class JsonifySettingCmd extends CmdBase
             'baseHost' => $config->get('baseHost'),
             'site' => $config->get('site'),
             'app' => $config->get('app'),
+            'front' => $config->get('front')
         ];
 
         $content = json_encode($jsSetting, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
