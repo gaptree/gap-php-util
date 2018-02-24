@@ -15,42 +15,29 @@ if ($config->get('debug') !== false) {
     $whoops->register();
 }
 
-$app = new \Gap\Base\App($config);
+$dmg = new \Gap\Database\DatabaseManager($config->get('db'), $config->get('server.id'));
+$cmg = new \Gap\Cache\CacheManager($config->get('cache'));
 
-register_router($app);
-register_session($app);
-register_view_engine($app);
-register_site_manager($app);
-register_site_url_builder($app);
-register_route_url_builder($app);
-// register_locale_manager($app);
-// register_dmg($app);
-// register_cmg($app);
-// register_translator($app);
+$app = new \Gap\Base\App($config, $dmg, $cmg);
 
-/*
-register_request_filter_manager($app, [
-    new \Gap\Base\RequestFilter\CsrfFilter()
-]);
-*/
+$srcOpts = [];
+foreach ($config->get('app') as $appName => $appOpts) {
+    $srcOpts[$appName]['dir'] = $appOpts['dir'] . '/setting/router';
+}
 
-/*
-register_route_filter_manager($app, [
-    new \Gap\Base\RouteFilter\LoginFilter()
-]);
-*/
+$routerBuilder = new \Gap\Routing\RouterBuilder(
+    $config->get('baseDir'),
+    $srcOpts
+);
+if (false === $config->get('debug')) {
+    $routerBuilder
+        ->setCacheFile('cache/setting-router-http.php');
+}
+$router = $routerBuilder->build();
 
-/*
-// composer require gap/meta
-$app->set('meta', function () use ($app, $config) {
-    return new \Gap\Meta\Meta(
-        $app->get('dmg')->connect($config->get('meta.db')),
-        $app->get('cmg')->connect($config->get('meta.cache'))
-    );
-});
- */
+$siteManager = new \Gap\Http\SiteManager($config->get('site'));
 
-$httpHandler = new \Gap\Base\HttpHandler($app);
+$httpHandler = new \Gap\Base\HttpHandler($app, $siteManager, $router);
 $request = new \Gap\Http\Request(
     $_GET,
     $_POST,

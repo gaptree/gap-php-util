@@ -14,7 +14,7 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "gap/site": "^1.0",
+        "gap/base": "^2.0",
         "gap/user": "^1.0",
         "filp/whoops": "^2.1",
         "symfony/var-dumper": "^4.0"

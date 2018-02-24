@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e6114c689e577508842da9d198491e12",
+    "content-hash": "6855e0868dbe014f992834c79e170853",
     "packages": [
         {
             "name": "aura/html",
@@ -238,11 +238,11 @@
         },
         {
             "name": "gap/base",
-            "version": "1.1.2",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://project.tecposter.cn/diffusion/63/gap-php-base.git",
-                "reference": "e686fdcbccf3fe37f0c535d4bb778eec0e657810"
+                "reference": "9d18205c97e92e253bbb8322b8b011b92807c96f"
             },
             "require": {
                 "foil/foil": "^0.6.7",
@@ -252,6 +252,7 @@
                 "gap/dto": "^1.0",
                 "gap/http": "^1.0",
                 "gap/i18n": "^1.0",
+                "gap/meta": "^1.0",
                 "gap/routing": "^1.0",
                 "gap/security": "^1.0",
                 "php": ">=7.1.0"
@@ -265,11 +266,34 @@
                     "Gap\\Base\\": "src"
                 },
                 "files": [
-                    "fun/functions.php",
-                    "fun/app-register.php"
+                    "fun/functions.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "phpunit\\Gap\\Base\\": "phpunit"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "@phpcs",
+                    "@phpmd",
+                    "@phpstan",
+                    "@phpunit"
+                ],
+                "phpunit": [
+                    "phpunit"
+                ],
+                "phpstan": [
+                    "phpstan analyse -l 7 -c phpstan.neon phpunit src"
+                ],
+                "phpcs": [
+                    "phpcs --report=full --standard=psr2 --extensions=php src phpunit"
+                ],
+                "phpmd": [
+                    "phpmd src,phpunit text cleancode,codesize,controversial,design,naming,unusedcode"
+                ]
+            },
             "authors": [
                 {
                     "name": "zhanjh",
@@ -281,7 +305,7 @@
             "keywords": [
                 "gap"
             ],
-            "time": "2017-12-26T10:08:23+00:00"
+            "time": "2018-02-22T11:44:47+00:00"
         },
         {
             "name": "gap/cache",
@@ -379,11 +403,11 @@
         },
         {
             "name": "gap/dto",
-            "version": "1.0.1",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://project.tecposter.cn/diffusion/75/gap-php-dto.git",
-                "reference": "892adce9ba99b691246679a2801995d7d35e5043"
+                "reference": "8024f1d8274cdf38ec2d49243ddd0ad00c7a8a8a"
             },
             "require": {
                 "php": ">=7.1.0"
@@ -410,15 +434,15 @@
                 "dto",
                 "gap"
             ],
-            "time": "2018-01-15T07:26:22+00:00"
+            "time": "2018-02-24T08:30:18+00:00"
         },
         {
             "name": "gap/http",
-            "version": "1.0.5",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://project.tecposter.cn/diffusion/61/gap-php-http.git",
-                "reference": "2fc096ddd27bf232db382641b5a19f076f946c0b"
+                "reference": "dbdcc82ee7783142d7ffb0fffc5f9c9597492201"
             },
             "require": {
                 "php": ">=7.1.0",
@@ -437,7 +461,7 @@
                     "email": "zhanjh@126.com"
                 }
             ],
-            "time": "2017-12-15T05:25:49+00:00"
+            "time": "2018-02-19T14:23:34+00:00"
         },
         {
             "name": "gap/i18n",
@@ -470,6 +494,38 @@
                 "gap"
             ],
             "time": "2018-01-16T06:53:53+00:00"
+        },
+        {
+            "name": "gap/meta",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://project.tecposter.cn/diffusion/57/gap-php-meta.git",
+                "reference": "6bcfe87e39cd09aaa762a06ab0525f5247189187"
+            },
+            "require": {
+                "gap/database": "^1.0",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gap\\Meta\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "zhanjh",
+                    "email": "zhanjh@126.com"
+                }
+            ],
+            "description": "Gap Meta",
+            "homepage": "https://project.tecposter.cn/diffusion/57/",
+            "keywords": [
+                "gap"
+            ],
+            "time": "2018-01-16T06:49:53+00:00"
         },
         {
             "name": "gap/open-contract",
@@ -544,13 +600,14 @@
         },
         {
             "name": "gap/routing",
-            "version": "1.0.8",
+            "version": "v1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://project.tecposter.cn/diffusion/51/gap-php-routing.git",
-                "reference": "d564e6bff9d7e6045abd1cefbdb31104c2c1e2a0"
+                "reference": "5d5f9e54c3252921cb24e31b1ccc6a64247e2744"
             },
             "require": {
+                "gap/http": "^1.0",
                 "nikic/fast-route": "^1.2",
                 "php": ">=7.1.0"
             },
@@ -572,7 +629,7 @@
             "keywords": [
                 "gap"
             ],
-            "time": "2018-01-08T05:56:24+00:00"
+            "time": "2018-02-19T19:18:58+00:00"
         },
         {
             "name": "gap/security",
@@ -605,38 +662,6 @@
                 "gap"
             ],
             "time": "2017-12-04T05:55:32+00:00"
-        },
-        {
-            "name": "gap/site",
-            "version": "1.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://project.tecposter.cn/diffusion/64/gap-php-site.git",
-                "reference": "aaa8c54edeead5d8905c07af7ee59c8be570d424"
-            },
-            "require": {
-                "gap/base": "^1.0",
-                "php": ">=7.1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Gap\\Site\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "zhanjh",
-                    "email": "zhanjh@126.com"
-                }
-            ],
-            "description": "Gap Site",
-            "homepage": "https://project.tecposter.cn/diffusion/53/",
-            "keywords": [
-                "gap"
-            ],
-            "time": "2017-12-19T11:02:50+00:00"
         },
         {
             "name": "gap/user",
@@ -755,20 +780,23 @@
         },
         {
             "name": "nikic/fast-route",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/FastRoute.git",
-                "reference": "b5f95749071c82a8e0f58586987627054400cdf6"
+                "reference": "181d480e08d9476e61381e04a71b34dc0432e812"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/nikic/FastRoute/b5f95749071c82a8e0f58586987627054400cdf6.zip",
-                "reference": "b5f95749071c82a8e0f58586987627054400cdf6",
+                "url": "https://files.phpcomposer.com/files/nikic/FastRoute/181d480e08d9476e61381e04a71b34dc0432e812.zip",
+                "reference": "181d480e08d9476e61381e04a71b34dc0432e812",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35|~5.7"
             },
             "type": "library",
             "autoload": {
@@ -794,7 +822,7 @@
                 "router",
                 "routing"
             ],
-            "time": "2017-01-19T11:35:12+00:00"
+            "time": "2018-02-13T20:26:39+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -846,16 +874,16 @@
         },
         {
             "name": "pimple/pimple",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silexphp/Pimple.git",
-                "reference": "4d45fb62d96418396ec58ba76e6f065bca16e10a"
+                "reference": "9e403941ef9d65d20cba7d54e29fe906db42cf32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/silexphp/Pimple/4d45fb62d96418396ec58ba76e6f065bca16e10a.zip",
-                "reference": "4d45fb62d96418396ec58ba76e6f065bca16e10a",
+                "url": "https://files.phpcomposer.com/files/silexphp/Pimple/9e403941ef9d65d20cba7d54e29fe906db42cf32.zip",
+                "reference": "9e403941ef9d65d20cba7d54e29fe906db42cf32",
                 "shasum": ""
             },
             "require": {
@@ -892,7 +920,7 @@
                 "container",
                 "dependency injection"
             ],
-            "time": "2017-07-23T07:32:15+00:00"
+            "time": "2018-01-21T07:42:36+00:00"
         },
         {
             "name": "psr/cache",
@@ -1086,16 +1114,16 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v4.0.3",
+            "version": "v4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
-                "reference": "1ebe207de664355b1699d35b12b0563c38a47b4e"
+                "reference": "e901ff335ef5e8ef57ee9b8e098bd54a1d39a857"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/cache/1ebe207de664355b1699d35b12b0563c38a47b4e.zip",
-                "reference": "1ebe207de664355b1699d35b12b0563c38a47b4e",
+                "url": "https://files.phpcomposer.com/files/symfony/cache/e901ff335ef5e8ef57ee9b8e098bd54a1d39a857.zip",
+                "reference": "e901ff335ef5e8ef57ee9b8e098bd54a1d39a857",
                 "shasum": ""
             },
             "require": {
@@ -1151,20 +1179,20 @@
                 "caching",
                 "psr6"
             ],
-            "time": "2018-01-03T17:15:19+00:00"
+            "time": "2018-01-18T22:19:33+00:00"
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v3.4.3",
+            "version": "v3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "4a213be1cc8598089b8c7451529a2927b49b5d26"
+                "reference": "8c39071ac9cc7e6d8dab1d556c990dc0d2cc3d30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/http-foundation/4a213be1cc8598089b8c7451529a2927b49b5d26.zip",
-                "reference": "4a213be1cc8598089b8c7451529a2927b49b5d26",
+                "url": "https://files.phpcomposer.com/files/symfony/http-foundation/8c39071ac9cc7e6d8dab1d556c990dc0d2cc3d30.zip",
+                "reference": "8c39071ac9cc7e6d8dab1d556c990dc0d2cc3d30",
                 "shasum": ""
             },
             "require": {
@@ -1205,20 +1233,20 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2018-01-03T17:14:19+00:00"
+            "time": "2018-01-29T09:03:43+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.6.0",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296"
+                "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/polyfill-mbstring/2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296.zip",
-                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
+                "url": "https://files.phpcomposer.com/files/symfony/polyfill-mbstring/78be803ce01e55d3491c1397cf1c64beb9c1b63b.zip",
+                "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b",
                 "shasum": ""
             },
             "require": {
@@ -1230,7 +1258,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6-dev"
+                    "dev-master": "1.7-dev"
                 }
             },
             "autoload": {
@@ -1264,20 +1292,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-10-11T12:05:26+00:00"
+            "time": "2018-01-30T19:27:44+00:00"
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "v1.6.0",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php70.git",
-                "reference": "0442b9c0596610bd24ae7b5f0a6cdbbc16d9fcff"
+                "reference": "3532bfcd8f933a7816f3a0a59682fc404776600f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/polyfill-php70/0442b9c0596610bd24ae7b5f0a6cdbbc16d9fcff.zip",
-                "reference": "0442b9c0596610bd24ae7b5f0a6cdbbc16d9fcff",
+                "url": "https://files.phpcomposer.com/files/symfony/polyfill-php70/3532bfcd8f933a7816f3a0a59682fc404776600f.zip",
+                "reference": "3532bfcd8f933a7816f3a0a59682fc404776600f",
                 "shasum": ""
             },
             "require": {
@@ -1287,7 +1315,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6-dev"
+                    "dev-master": "1.7-dev"
                 }
             },
             "autoload": {
@@ -1323,20 +1351,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-10-11T12:05:26+00:00"
+            "time": "2018-01-30T19:27:44+00:00"
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.6.0",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "6de4f4884b97abbbed9f0a84a95ff2ff77254254"
+                "reference": "8eca20c8a369e069d4f4c2ac9895144112867422"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/polyfill-php72/6de4f4884b97abbbed9f0a84a95ff2ff77254254.zip",
-                "reference": "6de4f4884b97abbbed9f0a84a95ff2ff77254254",
+                "url": "https://files.phpcomposer.com/files/symfony/polyfill-php72/8eca20c8a369e069d4f4c2ac9895144112867422.zip",
+                "reference": "8eca20c8a369e069d4f4c2ac9895144112867422",
                 "shasum": ""
             },
             "require": {
@@ -1345,7 +1373,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6-dev"
+                    "dev-master": "1.7-dev"
                 }
             },
             "autoload": {
@@ -1378,20 +1406,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-10-11T12:05:26+00:00"
+            "time": "2018-01-31T17:43:24+00:00"
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v4.0.3",
+            "version": "v4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "883f6109a2069773e088c08626b87a3d3d61c566"
+                "reference": "6d63cc74f3e2d4961411ccb77389a00332653104"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/var-dumper/883f6109a2069773e088c08626b87a3d3d61c566.zip",
-                "reference": "883f6109a2069773e088c08626b87a3d3d61c566",
+                "url": "https://files.phpcomposer.com/files/symfony/var-dumper/6d63cc74f3e2d4961411ccb77389a00332653104.zip",
+                "reference": "6d63cc74f3e2d4961411ccb77389a00332653104",
                 "shasum": ""
             },
             "require": {
@@ -1447,7 +1475,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2018-01-03T17:15:19+00:00"
+            "time": "2018-01-29T09:06:29+00:00"
         }
     ],
     "packages-dev": [],
