@@ -27,7 +27,7 @@ class InitCmd extends CmdBase
 
     protected function isGapInstalled()
     {
-        $gapRealDir = $this->baseDir . '/vendor/gap/site';
+        $gapRealDir = $this->baseDir . '/vendor/gap/base';
         return file_exists($gapRealDir);
     }
 }

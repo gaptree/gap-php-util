@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6855e0868dbe014f992834c79e170853",
+    "content-hash": "f481a06e7ce90018ee4ba8753e8718a9",
     "packages": [
         {
             "name": "aura/html",
@@ -238,11 +238,11 @@
         },
         {
             "name": "gap/base",
-            "version": "v2.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://project.tecposter.cn/diffusion/63/gap-php-base.git",
-                "reference": "9d18205c97e92e253bbb8322b8b011b92807c96f"
+                "reference": "9e799f44322db326f2f3dbeae638335f5c2f2b00"
             },
             "require": {
                 "foil/foil": "^0.6.7",
@@ -269,31 +269,7 @@
                     "fun/functions.php"
                 ]
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "phpunit\\Gap\\Base\\": "phpunit"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "@phpcs",
-                    "@phpmd",
-                    "@phpstan",
-                    "@phpunit"
-                ],
-                "phpunit": [
-                    "phpunit"
-                ],
-                "phpstan": [
-                    "phpstan analyse -l 7 -c phpstan.neon phpunit src"
-                ],
-                "phpcs": [
-                    "phpcs --report=full --standard=psr2 --extensions=php src phpunit"
-                ],
-                "phpmd": [
-                    "phpmd src,phpunit text cleancode,codesize,controversial,design,naming,unusedcode"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "zhanjh",
@@ -305,7 +281,7 @@
             "keywords": [
                 "gap"
             ],
-            "time": "2018-02-22T11:44:47+00:00"
+            "time": "2018-02-24T18:10:06+00:00"
         },
         {
             "name": "gap/cache",
