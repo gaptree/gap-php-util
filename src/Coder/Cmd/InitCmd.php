@@ -14,10 +14,17 @@ class InitCmd extends CmdBase
             system($composerCmd);
         }
 
-        $cmd = 'cp -vnR ' . __DIR__ . '/tpl/project/. ' . $this->baseDir;
+        // Do not overwrite existing files
+        $cmd = 'cp -vnR ' . __DIR__ . '/tpl/project/custom/. ' . $this->baseDir;
         echo $cmd . "\n";
         system($cmd);
 
+        // Overwrite existing files
+        $cmd = 'cp -vR ' . __DIR__ . '/tpl/project/sys/. ' . $this->baseDir;
+        echo $cmd . "\n";
+        system($cmd);
+
+        // do not overwrite existing setting.local.php
         $cpCmd = 'cp -vn '
             . $this->baseDir . '/setting/setting.local-default.php '
             . $this->baseDir . '/setting/setting.local.php';
