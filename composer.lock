@@ -238,11 +238,11 @@
         },
         {
             "name": "gap/base",
-            "version": "v2.0.1",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://project.tecposter.cn/diffusion/63/gap-php-base.git",
-                "reference": "9e799f44322db326f2f3dbeae638335f5c2f2b00"
+                "reference": "c953c786c8086b2463534f74a0f9e437a6e22232"
             },
             "require": {
                 "foil/foil": "^0.6.7",
@@ -281,7 +281,7 @@
             "keywords": [
                 "gap"
             ],
-            "time": "2018-02-24T18:10:06+00:00"
+            "time": "2018-02-25T10:00:15+00:00"
         },
         {
             "name": "gap/cache",
