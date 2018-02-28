@@ -11,7 +11,7 @@ class BuildEntityCmd extends CmdBase
     {
         $buildParser = new BuildParser(
             $this->parameters[0] ?? '',
-            $this->app->getConfig()->get('app')
+            $this->app->getConfig()->arr('app')
         );
 
         if (!$buildParser->getAppName()) {

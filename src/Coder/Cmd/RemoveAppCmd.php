@@ -14,7 +14,7 @@ class RemoveAppCmd extends CmdBase
     {
         $buildParser = new BuildParser(
             $this->parameters[0] ?? '',
-            $this->app->getConfig()->get('app')
+            $this->app->getConfig()->arr('app')
         );
 
         if (!$buildParser->getAppName()) {
@@ -49,7 +49,7 @@ class RemoveAppCmd extends CmdBase
     {
         echo "  buildAppConfig \n";
 
-        $appAsm = $this->app->getConfig()->get('app');
+        $appAsm = $this->app->getConfig()->arr('app');
         $appName = $appParser->getAppName();
         unset($appAsm[$appName]);
         obj(new SaveAppConfig($appAsm, $this->baseDir))
@@ -81,7 +81,7 @@ class RemoveAppCmd extends CmdBase
     {
         echo "  buildPhpunit \n";
 
-        $appAsm = $this->app->getConfig()->get('app');
+        $appAsm = $this->app->getConfig()->arr('app');
         unset($appAsm[$appParser->getAppName()]);
         obj(new SavePhpunit($appAsm, $this->baseDir))
             ->save();

@@ -9,21 +9,21 @@ class JsonifySettingCmd extends CmdBase
         $vcode = uniqid('gap');
 
         $config = $this->app->getConfig();
-        $serverId = $config->get('server.id');
+        $serverId = $config->config('server')->str('id');
 
         if (empty($serverId) || 1 === intval($serverId)) {
             $serverId = bin2hex(random_bytes(3));
         }
 
         $jsSetting = [
-            'debug' => $config->get('debug'),
+            'debug' => $config->bool('debug'),
             'vcode' => $vcode,
             'serverId' => $serverId,
-            'baseDir' => $config->get('baseDir'),
-            'baseHost' => $config->get('baseHost'),
-            'site' => $config->get('site'),
-            'app' => $config->get('app'),
-            'front' => $config->get('front')
+            'baseDir' => $config->str('baseDir'),
+            'baseHost' => $config->str('baseHost'),
+            'site' => $config->arr('site'),
+            'app' => $config->arr('app'),
+            'front' => $config->arr('front')
         ];
 
         $content = json_encode($jsSetting, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);

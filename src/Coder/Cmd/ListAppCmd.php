@@ -5,7 +5,7 @@ class ListAppCmd extends CmdBase
 {
     public function run()
     {
-        $apps = $this->app->getConfig()->get('app', []);
+        $apps = $this->app->getConfig()->arr('app');
 
         foreach ($apps as $appName => $opts) {
             echo $appName . ' - ';

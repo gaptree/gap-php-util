@@ -18,7 +18,7 @@ class BuildAppCmd extends CmdBase
     {
         $buildParser = new BuildParser(
             $this->parameters[0] ?? '',
-            $this->app->getConfig()->get('app')
+            $this->app->getConfig()->arr('app')
         );
 
         $target = $this->options['target'] ?? '';
@@ -67,7 +67,7 @@ class BuildAppCmd extends CmdBase
         echo "  buildAppConfig\n";
 
 
-        $appAsm = $this->app->getConfig()->get('app', []);
+        $appAsm = $this->app->getConfig()->arr('app');
         $appName = $appParser->getAppName();
         $appAsm[$appName] = [
             'dir' => $appParser->getAppSubDir()
@@ -104,7 +104,7 @@ class BuildAppCmd extends CmdBase
     protected function buildPhpunit($appParser)
     {
         echo "  buildPhpunit \n";
-        $appAsm = $this->app->getConfig()->get('app', []);
+        $appAsm = $this->app->getConfig()->arr('app');
         $appAsm[$appParser->getAppName()] = $appParser->getAppPath();
 
         obj(new SavePhpunit($appAsm, $this->baseDir))

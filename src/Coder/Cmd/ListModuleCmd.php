@@ -6,8 +6,8 @@ class ListModuleCmd extends CmdBase
     public function run()
     {
         $config = $this->app->getConfig();
-        $apps = $config->get('app');
-        $baseDir = $config->get('baseDir');
+        $apps = $config->arr('app');
+        $baseDir = $config->str('baseDir');
 
         foreach ($apps as $appName => $opts) {
             echo $appName . ' - ';

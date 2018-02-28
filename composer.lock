@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f481a06e7ce90018ee4ba8753e8718a9",
+    "content-hash": "37bf20e2a771b268600b71e1743b23a7",
     "packages": [
         {
             "name": "aura/html",
@@ -238,11 +238,11 @@
         },
         {
             "name": "gap/base",
-            "version": "v2.0.4",
+            "version": "v2.0.6",
             "source": {
                 "type": "git",
-                "url": "https://github.com/gaptree/gap-php-base.git",
-                "reference": "0722c49ae2a922a3ad521bb89ba3758fbdb649f8"
+                "url": "https://github.com/gaptree/gap-php-base",
+                "reference": "79d14c4967ccad61999f7e93e9b1997fcf7643aa"
             },
             "require": {
                 "foil/foil": "^0.6.7",
@@ -305,7 +305,7 @@
             "keywords": [
                 "gap"
             ],
-            "time": "2018-02-28T08:57:57+00:00"
+            "time": "2018-02-28T09:42:31+00:00"
         },
         {
             "name": "gap/cache",
@@ -344,7 +344,7 @@
             "version": "v2.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/gaptree/gap-php-config.git",
+                "url": "https://github.com/gaptree/gap-php-config",
                 "reference": "54b2e1d664e3ec8466e6a889b168e4f2a5708dc5"
             },
             "dist": {
