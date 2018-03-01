@@ -40,7 +40,7 @@ class RemoveAppCmd extends CmdBase
         $this->buildComposer($appParser);
         $this->buildPhpunit($appParser);
 
-        //obj(new RemoveDir())->remove($appParser->getAppDir());
+        //(new RemoveDir())->remove($appParser->getAppDir());
         echo "  remove app files manually: \n";
         echo "  $ rm -rf {$appParser->getAppDir()} \n";
     }
@@ -52,7 +52,7 @@ class RemoveAppCmd extends CmdBase
         $appAsm = $this->app->getConfig()->arr('app');
         $appName = $appParser->getAppName();
         unset($appAsm[$appName]);
-        obj(new SaveAppConfig($appAsm, $this->baseDir))
+        (new SaveAppConfig($appAsm, $this->baseDir))
             ->save();
     }
 
@@ -66,15 +66,21 @@ class RemoveAppCmd extends CmdBase
         unset($composerAsm['autoload']['psr-4'][$appName . "\\"]);
         unset($composerAsm['autoload-dev']['psr-4']["phpunit\\{$appName}\\"]);
 
-        if (!$composerAsm['autoload-dev']['psr-4']) {
-            unset($composerAsm['autoload-dev']['psr-4']);
-        }
-        if (!$composerAsm['autoload-dev']) {
-            unset($composerAsm['autoload-dev']);
-        }
+        $this->clearEmptyAttr($composerAsm['autoload-dev'], 'psr-4');
+        $this->clearEmptyAttr($composerAsm, 'autoload-dev');
 
-        obj(new SaveComposer($composerAsm, $this->baseDir))
+        $this->clearEmptyAttr($composerAsm['autoload'], 'psr-4');
+        $this->clearEmptyAttr($composerAsm, 'autoload');
+
+        (new SaveComposer($composerAsm, $this->baseDir))
             ->save();
+    }
+
+    protected function clearEmptyAttr(array &$arr, string $key): void
+    {
+        if (empty($arr[$key])) {
+            unset($arr[$key]);
+        }
     }
 
     protected function buildPhpunit($appParser)
@@ -83,7 +89,7 @@ class RemoveAppCmd extends CmdBase
 
         $appAsm = $this->app->getConfig()->arr('app');
         unset($appAsm[$appParser->getAppName()]);
-        obj(new SavePhpunit($appAsm, $this->baseDir))
+        (new SavePhpunit($appAsm, $this->baseDir))
             ->save();
     }
 }
