@@ -12,7 +12,7 @@ class RegCmd extends CmdBase
             return;
         }
 
-        $userAdapter = new UserAdapter($this->app->get('dmg'));
+        $userAdapter = new UserAdapter($this->app->getDmg());
         list($username, $password) = $this->parameters;
 
         $userAdapter->reg($username, $password);
