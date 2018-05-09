@@ -1,6 +1,8 @@
 <?php
 namespace Gap\Util\Setting\Cmd;
 
+use Gap\Dto\DateTime as GapDateTime;
+
 class JsonifySettingCmd extends CmdBase
 {
     // http://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
@@ -66,11 +68,14 @@ class JsonifySettingCmd extends CmdBase
 
     protected function getVersionSettingStr($vcode)
     {
+        $changed = new GapDateTime();
+
         $codes = [];
         $codes[] = '<?php';
         $codes[] = '$collection = new \Gap\Config\ConfigCollection();';
         $codes[] = '$collection';
-        $codes[] = "    ->set(\"vcode\", \"$vcode\");";
+        $codes[] = "    ->set(\"vcode\", \"$vcode\")";
+        $codes[] = "    ->set(\"changed\", \"$changed\");";
         $codes[] = 'return $collection;';
         return implode("\n", $codes) . "\n";
     }
