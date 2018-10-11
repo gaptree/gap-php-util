@@ -23,23 +23,32 @@ class ListModuleCmd extends CmdBase
                 continue;
             }
 
-            $files = scandir($srcDir);
-            foreach ($files as $file) {
-                if ($file == '.') {
-                    continue;
-                }
+            $this->scanSrcDir($srcDir);
+        }
+    }
 
-                if ($file == '..') {
-                    continue;
-                }
+    private function scanSrcDir($srcDir)
+    {
+        $files = scandir($srcDir);
+        if (!is_array($files)) {
+            return;
+        }
 
-                if ($file == 'Base') {
-                    continue;
-                }
+        foreach ($files as $file) {
+            if ($file == '.') {
+                continue;
+            }
 
-                if (is_dir($srcDir . '/' . $file)) {
-                    echo " - $file\n";
-                }
+            if ($file == '..') {
+                continue;
+            }
+
+            if ($file == 'Base') {
+                continue;
+            }
+
+            if (is_dir($srcDir . '/' . $file)) {
+                echo " - $file\n";
             }
         }
     }

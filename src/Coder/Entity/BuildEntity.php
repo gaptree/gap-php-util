@@ -23,7 +23,7 @@ class BuildEntity
 
     public function build()
     {
-        obj(new BuildEntityBaseByApp(
+        (new BuildEntityBaseByApp(
             $this->baseDir,
             $this->buildParser->getApps(),
             $this->buildParser->getAppName(),
@@ -32,7 +32,7 @@ class BuildEntity
 
         $appDir = $this->baseDir . '/' . $this->buildParser->getAppSubDir();
 
-        obj(new BuildEntityBaseByLayer(
+        (new BuildEntityBaseByLayer(
             $appDir,
             $this->buildParser->getAppName(),
             $this->buildParser->getModuleName(),

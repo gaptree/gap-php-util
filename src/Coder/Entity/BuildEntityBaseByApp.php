@@ -24,7 +24,7 @@ class BuildEntityBaseByApp
         }
 
         if ($baseAppName = $appOpts['base'] ?? '') {
-            obj(new self(
+            (new self(
                 $this->baseDir,
                 $this->apps,
                 $baseAppName,

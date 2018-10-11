@@ -79,7 +79,7 @@ class BuildAppCmd extends CmdBase
             $appAsm[$appName]['base'] = $base;
         }
 
-        obj(new SaveAppConfig($appAsm, $this->baseDir))
+        (new SaveAppConfig($appAsm, $this->baseDir))
             ->save();
     }
 
@@ -87,7 +87,11 @@ class BuildAppCmd extends CmdBase
     {
         echo "  buildComposer \n";
         $composerFile = $this->baseDir . '/composer.json';
-        $composerAsm = json_decode(file_get_contents($composerFile), true);
+        $fileContents = file_get_contents($composerFile);
+        if ($fileContents === false) {
+            throw new \Exception('cannot get content from file: ' . $composerFile);
+        }
+        $composerAsm = json_decode($fileContents, true);
         $appName = $appParser->getAppName();
 
         $autoloadKey = $this->isDev ? 'autoload-dev' : 'autoload';
@@ -97,7 +101,7 @@ class BuildAppCmd extends CmdBase
         $composerAsm['autoload-dev']['psr-4']["phpunit\\{$appName}\\"]
             = $appParser->getAppSubDir() . "/phpunit";
 
-        obj(new SaveComposer($composerAsm, $this->baseDir))
+        (new SaveComposer($composerAsm, $this->baseDir))
             ->save();
     }
 
@@ -107,7 +111,7 @@ class BuildAppCmd extends CmdBase
         $appAsm = $this->app->getConfig()->arr('app');
         $appAsm[$appParser->getAppName()] = $appParser->getAppPath();
 
-        obj(new SavePhpunit($appAsm, $this->baseDir))
+        (new SavePhpunit($appAsm, $this->baseDir))
             ->save();
     }
 }

@@ -38,7 +38,7 @@ class SavePhpunit
 
     protected function toPath($appName)
     {
-        return obj(new AppParser('', $appName))
+        return (new AppParser('', $appName))
             ->getAppPath();
     }
 }

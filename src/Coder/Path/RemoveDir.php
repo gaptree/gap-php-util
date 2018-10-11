@@ -7,15 +7,17 @@ class RemoveDir
     {
         if (is_dir($dir)) {
             $objects = scandir($dir);
-            foreach ($objects as $object) {
-                if ($object != "." && $object != "..") {
-                    if (is_dir($dir . "/" . $object)) {
-                        $this->remove($dir . "/" . $object);
-                        continue;
-                    }
+            if (is_array($objects)) {
+                foreach ($objects as $object) {
+                    if ($object != "." && $object != "..") {
+                        if (is_dir($dir . "/" . $object)) {
+                            $this->remove($dir . "/" . $object);
+                            continue;
+                        }
 
-                    unlink($dir . "/" . $object);
-                    echo "remove file: $dir/$object \n";
+                        unlink($dir . "/" . $object);
+                        echo "remove file: $dir/$object \n";
+                    }
                 }
             }
 

@@ -82,6 +82,10 @@ class BuildParser
             }
 
             $lastPos = strrpos($existed, "\\");
+            if ($lastPos === false) {
+                throw new \Exception('cannot find \\');
+            }
+
             $pre = substr($existed, 0, $lastPos);
             array_unshift($stacks, substr($existed, $lastPos + 1));
             $existed = $pre;

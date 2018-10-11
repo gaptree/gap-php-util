@@ -6,7 +6,7 @@ class TestCmd extends CmdBase
     public function run()
     {
         $testClass = $this->getTest();
-        obj(new $testClass())->test();
+        (new $testClass())->test();
     }
 
     protected function getTest()

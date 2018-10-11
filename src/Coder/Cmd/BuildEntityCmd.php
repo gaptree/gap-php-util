@@ -47,7 +47,7 @@ class BuildEntityCmd extends CmdBase
             . $buildParser->getEntityName()
             . "\n";
 
-        obj(new BuildEntity(
+        (new BuildEntity(
             $this->baseDir,
             $buildParser,
             $appParser
